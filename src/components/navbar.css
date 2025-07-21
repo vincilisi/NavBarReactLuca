@@ -54,3 +54,8 @@
 .dropdown-menu li:hover {
   background-color: #5dd90bff;
 }
+
+.navbar,
+.dropdown-menu {
+  transition: background-color 0.4s ease-in-out;
+}
