@@ -5,26 +5,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(prev => !prev);
 
-  useEffect(() => {
-  const navbarInterval = setInterval(() => {
-    const colors = ["#ff33ff", "#006666", "#ffc6b3"];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    const navbar = document.querySelector('.navbar');
-    if (navbar) navbar.style.backgroundColor = randomColor;
-  }, 300); // intervallo di 300ms per il cambio colore della navbar
-
-  const menuInterval = setInterval(() => {
-    const colormenu = ["#ffc6b3", "#ff33ff", "#006666"];
-    const randomColorMenu = colormenu[Math.floor(Math.random() * colormenu.length)];
-    const menu = document.querySelector('.dropdown-menu');
-    if (menu) menu.style.backgroundColor = randomColorMenu;
-  }, 800); // intervallo diverso per il cambio colore del menu a discesa
-
-  return () => {
-    clearInterval(navbarInterval);
-    clearInterval(menuInterval);
-  };
-}, []);
 
 
   return (
