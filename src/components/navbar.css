@@ -1,57 +1,132 @@
+/* Navbar container */
 .navbar {
-  height: 60px;
   display: flex;
-  justify-content: space-beetween;
   align-items: center;
-  padding: 10px;
   background-color: #666;
+  padding: 10px 30px;
+  position: relative;
+}
+
+/* Sezioni generiche */
+.nav-section {
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO tutto a sinistra */
+.logo {
+  flex: 0 0 auto;
+  margin-right: auto;
 }
 
 .imglogo {
-  width: 20%;
+  width: 80px;
   height: auto;
 }
 
-.menu {
-  display: flex;
-  justify-content: space-around;
-  width: 50%;
-  list-style: none;
+/* HOME tra logo e prodotti */
+.home {
+  flex: 0 0 auto;
+  margin-left: calc(5%); /* spinge verso Prodotti */
 }
 
-.active a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-toggle {
-  padding: 10px;
-  background-color: transparent;
+.home a {
   color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* PRODOTTI centrato */
+.prodotti {
+  flex-grow: 1;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.prodotti .dropdown-toggle {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  background: none;
   border: none;
   cursor: pointer;
 }
 
+/* MENU a tendina */
 .dropdown-menu {
   position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #666;
-  border: 1px solid #ccc;
   list-style: none;
+  border: 1px solid #ccc;
   padding: 0;
-  margin-top: 5px;
-  width: 150px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 160px;
 }
 
 .dropdown-menu li {
   padding: 10px;
+  transition: background-color 0.2s ease;
 }
 
 .dropdown-menu li:hover {
   background-color: #5dd90bff;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ALLERGENI vicino a prodotti */
+.allergeni {
+  flex: 0 0 auto;
+  margin-right: calc(15%);
+}
+
+.allergeni a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* PROMOZIONI vicino al campo di ricerca */
+.promozioni {
+  flex: 0 0 auto;
+  margin-right: calc(7%);
+}
+
+.promozioni a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* SEARCH tutto a destra */
+.search-area {
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: 8px;
+}
+
+.search-input {
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: none;
+  height: 20px;
+}
+
+.search-button {
+  padding: 6px 10px;
+  background-color: #5dd90bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  height: 36px;
+  cursor: pointer;
 }

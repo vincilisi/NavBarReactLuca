@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
+import { useState } from 'react'
 import Navbar from './components/navbar'
 import Card from './components/card'
 
 function App() {
-  let title = 'Prova NavFiga'
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchTerm(query); // aggiorna lo stato con la query
+  };
 
   return (
     <>
-    <Navbar />
-    <h1>{title}</h1>
-    <Card />
+      <Navbar onSearch={handleSearch} />
+      <h1>Prova NavFiga</h1>
+      <Card searchTerm={searchTerm} />
     </>
   )
 }
 
-export default App
+export default App;
