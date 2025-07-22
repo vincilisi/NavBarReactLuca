@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './navbar.css';
 
-const Navbar = () => {
+function Navbar(){
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(prev => !prev);
 
