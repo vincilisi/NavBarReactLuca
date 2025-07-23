@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './navbar.css';
+import { Link } from "react-router-dom";
+import HomePages from "../pages/homepages";
+import Allergeni from "../pages/allergeni";
 
 function Navbar({ onSearch }) {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const anchorRefPromo = useRef();
+  const anchorRefAller = useRef();
+  useEffect(()=>{
+    if(anchorRefPromo && anchorRefAller)
+    {
+      anchorRefPromo.current.href="promozioni";
+      anchorRefAller.current.href="allergeni";
+    }
+    return 
+  }, []);
 
   const toggleDropdown = () => setIsOpen(prev => !prev);
 
@@ -21,13 +34,12 @@ function Navbar({ onSearch }) {
       </div>
 
       {/* Home */}
-      <div className="nav-section home">
-        <a href="#">Home</a>
-      </div>
+    <div className="nav-section">
+        <Link className="home" to={"/"}>Home</Link>
 
       {/* Prodotti */}
       <div className="nav-section prodotti">
-        <button onClick={toggleDropdown} className="dropdown-toggle">Prodotti ▼</button>
+        <button onClick={toggleDropdown} className="dropdown-toggle">Prodotti</button>
         {isOpen && (
           <ul className="dropdown-menu">
             <li><a href="#">Panini</a></li>
@@ -38,14 +50,13 @@ function Navbar({ onSearch }) {
       </div>
 
       {/* Allergeni */}
-      <div className="nav-section allergeni">
-        <a href="#">Allergeni</a>
-      </div>
+        <Link className="allergeni" to={"allergeni"} ref={anchorRefAller}>Allergeni</Link>
+      
 
       {/* Promozioni */}
-      <div className="nav-section promozioni">
-        <a href="#">Promozioni</a>
-      </div>
+
+        <Link className="promozioni" to={"promozioni"} ref={anchorRefPromo}>Promozioni</Link>
+    </div>
 
       {/* Search */}
       <div className="nav-section search-area">

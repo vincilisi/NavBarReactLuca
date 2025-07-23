@@ -10,7 +10,11 @@
 /* Sezioni generiche */
 .nav-section {
   display: flex;
+  flex: 1;
+  gap: 16px;
   align-items: center;
+  justify-content: flex-start;
+  
 }
 
 /* LOGO tutto a sinistra */
@@ -25,24 +29,19 @@
 }
 
 /* HOME tra logo e prodotti */
-.home {
-  flex: 0 0 auto;
-  margin-left: calc(5%); /* spinge verso Prodotti */
-}
 
-.home a {
+.home {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  margin-left: 50px;
 }
 
 /* PRODOTTI centrato */
 .prodotti {
   position: relative;
-  flex-grow: 1;
-  justify-content: center;
-  display: flex;
-  align-items: center;
+  justify-content: left;
+  flex: 0;
 }
 
 .prodotti .dropdown-toggle {
@@ -89,11 +88,6 @@
 
 /* ALLERGENI vicino a prodotti */
 .allergeni {
-  flex: 0 0 auto;
-  margin-right: calc(15%);
-}
-
-.allergeni a {
   color: white;
   text-decoration: none;
   font-size: 18px;
@@ -102,10 +96,9 @@
 /* PROMOZIONI vicino al campo di ricerca */
 .promozioni {
   flex: 0 0 auto;
-  margin-right: calc(7%);
 }
 
-.promozioni a {
+.promozioni {
   color: white;
   text-decoration: none;
   font-size: 18px;

@@ -1,0 +1,211 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  color: #333;
+}
+
+.container {
+  height: 100%;
+  background-color: #333;
+  text-align: center;
+
+}
+
+.Phome {
+  text-align: center;
+  padding-top: 12rem;
+  font-size: 50px;
+  color: azure;
+}
+
+.icona-react-europa {
+  margin-top: 5rem;
+  align-items: center;
+  font-size: 10rem;
+  color: azure;
+  cursor: pointer;
+}
+
+.description {
+  text-align: center;
+  color: rgb(92, 90, 90)
+}
+
+
+.luogo-card {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.luogo-card h2 {
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.mappa {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mappa iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.orari {
+  background-color: #fefefe;
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.oraritempo td {
+  padding: 5px 10px;
+  text-align: left;
+}
+
+
+.luogo-orari-container {
+  text-align: start;
+  display: flex;
+  justify-content: space-around;
+  /* Centra orizzontalmente gli elementi */
+  align-items: center;
+  /* Centra verticalmente (se hai un'altezza definita) */
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0 auto;
+  /* Centra il contenitore nella pagina */
+  max-width: 100%;
+  margin: 25px;
+}
+
+.homepage {
+  height: 100vh;
+  background-color: #ccc;
+}
+
+
+
+
+
+
+
+
+.carousel {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carosello {
+  width: 400px;
+  height: 150px;
+  margin-top: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carosello-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.carosello-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.freccia {
+
+  margin-top: 24.3rem;
+}
+
+.sinistra,
+.destra {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ffcc00;
+  /* Giallo McDonald's, puoi modificarlo */
+  z-index: 10;
+  transition: transform 0.2s ease;
+  color: #333;
+}
+
+.sinistra:hover,
+.destra:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.sinistra {
+  left: +15rem;
+}
+
+.destra {
+  right: +15rem;
+}

@@ -1,0 +1,30 @@
+.custom {
+    height: 10vh;
+    background-color: #666;
+    align-items: center;
+    text-align: center;
+}
+
+.foot {
+    font-size: 16px;
+    color: white;
+    padding-top: 1.5rem;
+}
+
+.git {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.git-icon {
+    font-size: 1.5rem;
+    color: #fefefe;
+}
+
+.gitA {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fefefe;
+}
