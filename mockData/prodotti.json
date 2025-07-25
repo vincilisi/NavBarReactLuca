@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "category": "Burgers",
+        "name": "Big Mac",
+        "description": "Due hamburger di manzo, salsa speciale, lattuga, formaggio, cetrioli e cipolla su pane con semi di sesamo.",
+        "price": 4.99,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202302_0005-999_BigMac_1564x1564-1?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 2,
+        "category": "Burgers",
+        "name": "McChicken",
+        "description": "Pollo croccante, lattuga e maionese su un panino morbido.",
+        "price": 3.49,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202411_4314-999_McChicken_McValue_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 3,
+        "category": "Burgers",
+        "name": "Cheeseburger",
+        "description": "Hamburger con formaggio fuso, cetriolini, cipolla, ketchup e senape.",
+        "price": 2.49,
+        "image": "https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_202302_0003-999_CheeseburgerAlt_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 4,
+        "category": "Breakfast",
+        "name": "Egg McMuffin",
+        "description": "Uovo, formaggio e prosciutto canadese in un English muffin tostato.",
+        "price": 3.29,
+        "image": "https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_202004_0046_EggMcMuffin_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 5,
+        "category": "Breakfast",
+        "name": "Hotcakes",
+        "description": "Tre soffici pancake serviti con sciroppo d'acero e burro.",
+        "price": 3.99,
+        "image": "https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_202405_0031_3HotCakes_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 6,
+        "category": "Fries & Sides",
+        "name": "Patatine Fritte Medie",
+        "description": "Classiche patatine fritte dorate e croccanti.",
+        "price": 2.19,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_8932_MediumFries_1564x1564-1?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 7,
+        "category": "Fries & Sides",
+        "name": "Nuggets di Pollo (6 pezzi)",
+        "description": "6 bocconcini di pollo croccanti serviti con salsa a scelta.",
+        "price": 3.89,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202411_0060_6McNuggets_Broken_McValue_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 8,
+        "category": "Beverages",
+        "name": "Coca-Cola",
+        "description": "Bibita gassata classica servita con ghiaccio.",
+        "price": 1.49,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202402_0521_MediumCoke_ContourGlassv1_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 9,
+        "category": "Beverages",
+        "name": "Caffè Americano",
+        "description": "Caffè nero caldo, 100% Arabica.",
+        "price": 1.19,
+        "image": "https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_201906_1318_MediumAmericano_Glass_A1_HL_1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 11,
+        "category": "Desserts",
+        "name": "McFlurry M&M'S",
+        "description": "Gelato con gli M&M's",
+        "price": 2.69,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_3830_MandMMcFlurry_1564x1564-1?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 11,
+        "category": "Desserts",
+        "name": "McFlurry Oreo",
+        "description": "Gelato con pezzetti di biscotto Oreo.",
+        "price": 2.69,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_3832_OREOMcFlurry_1564x1564-1?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 12,
+        "category": "Happy Meal",
+        "name": "Happy Meal Hamburger",
+        "description": "Hamburger con contorno, bibita e giocattolo per bambini.",
+        "price": 4.49,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202307_6975_HamburgerHappyMeal_AppleSlices_WhiteMilkJug1564x1564?wid=1000&hei=1000&dpr=off"
+    },
+    {
+        "id": 13,
+        "category": "Chicken & Fish",
+        "name": "Filet-O-Fish",
+        "description": "Panino con filetto di pesce impanato, formaggio e salsa tartara.",
+        "price": 3.99,
+        "image": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202302_5926-999_Filet-O-Fish_HalfSlice_Alt_1564x1564-1?wid=1000&hei=1000&dpr=off"
+    }
+]

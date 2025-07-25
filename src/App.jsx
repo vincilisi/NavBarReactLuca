@@ -23,8 +23,9 @@ const routes = createBrowserRouter([
         element: <Allergeni />,
       },
       {
-        path: "prodotti",
+        path: "prodotti/:name",
         element: <Prodotti />,
+
       },
       {
         path: "promozioni",

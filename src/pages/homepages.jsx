@@ -53,7 +53,7 @@ const HomePages = () => {
     <div className="homepage">
       <h1>Home Page</h1>
       <h2 className="description">
-        🍔 Un sorriso ad ogni morso. McDonald's: il gusto che fa felice
+        Un sorriso ad ogni morso. McDonald's: il gusto che fa felice
       </h2>
 
       <div className="luogo-orari-container">
