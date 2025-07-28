@@ -16,10 +16,11 @@
 }
 
 .card {
+  position: relative;
   margin-top: 2rem;
   flex: 0 0 auto;
   width: 30vh;
-  height: 40vh;
+  height: 45vh;
   background-color: #fefefe;
   border: 2px solid #666;
   border-radius: 8px;
@@ -42,7 +43,7 @@
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .card img {
@@ -67,4 +68,50 @@
   font-size: 1em;
   color: #666;
   margin-top: 4px;
+}
+
+.variant-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.variant-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.variant-dot.active {
+  border-color: #222;
+  background-color: #ffd700;
+}
+
+
+
+.cart-icon-top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333;
+  z-index: 2;
+  /* più alto per rimanere visibile */
+  background: white;
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+}
+
+.cart-icon-top-right:hover {
+  background-color: #f0f0f0;
 }

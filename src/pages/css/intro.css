@@ -1,0 +1,27 @@
+.intro {
+    height: 100vh;
+    background-color: #333;
+}
+
+.container {
+    height: 100%;
+    text-align: center;
+}
+
+.icona-react-europa {
+    font-size: 100px;
+    cursor: pointer;
+    color: #61dafb;
+    transition: transform 0.3s ease;
+}
+
+.icona-react-europa:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.Phome {
+    text-align: center;
+    padding-top: 20rem;
+    font-size: 50px;
+    color: azure;
+}

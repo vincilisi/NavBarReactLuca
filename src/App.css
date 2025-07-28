@@ -1,3 +1,6 @@
-.full-height{
-    height: 100vh;
+.full-height {
+    flex: 1;
+    /* Questo fa sì che main prenda tutto lo spazio rimanente */
+    display: flex;
+    flex-direction: column;
 }

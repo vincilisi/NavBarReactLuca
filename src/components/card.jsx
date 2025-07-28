@@ -2,8 +2,7 @@ import React from "react";
 import './card.css';
 import Tile from "./tile";
 
-
-const SectionCards = ({ cards = [] }) => {
+const SectionCards = ({ cards = [], addToCart }) => {
   if (!cards.length) return <p>Nessun prodotto trovato.</p>;
 
   return (
@@ -15,6 +14,8 @@ const SectionCards = ({ cards = [] }) => {
           img={card.image}
           title={card.name}
           price={card.price}
+          variant={card.variant}
+          addToCart={addToCart}
         />
       ))}
     </div>

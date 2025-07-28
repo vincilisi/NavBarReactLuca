@@ -7,27 +7,6 @@ h1 {
   text-shadow: 2px 2px rgb(178, 15, 15);
 }
 
-.container {
-  height: 100%;
-  background-color: #333;
-  text-align: center;
-
-}
-
-.Phome {
-  text-align: center;
-  padding-top: 12rem;
-  font-size: 50px;
-  color: azure;
-}
-
-.icona-react-europa {
-  margin-top: 5rem;
-  align-items: center;
-  font-size: 10rem;
-  color: azure;
-  cursor: pointer;
-}
 
 .description {
   font-family: Arial, Helvetica, sans-serif;

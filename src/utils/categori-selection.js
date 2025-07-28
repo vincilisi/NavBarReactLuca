@@ -1,8 +1,8 @@
 const categorySelection = (category) => {
     switch (category) {
-        case "panini":
+        case "burgers":
             return ["Burgers", "Happy Meal", "Chicken & Fish"];
-        case "bevande":
+        case "beverage":
             return ["Beverages"];
 
         case "dessert":

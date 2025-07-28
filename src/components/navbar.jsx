@@ -1,77 +1,55 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import './navbar.css';
 import { Link } from "react-router-dom";
-import HomePages from "../pages/homepages";
-import Allergeni from "../pages/allergeni";
-import McImg from "../assets/media/mc.png"
+import McImg from "../assets/media/mc.png";
+import { TiShoppingCart } from "react-icons/ti";
 
-function Navbar({ onSearch }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [query, setQuery] = useState('');
-  const anchorRefPromo = useRef();
-  const anchorRefAller = useRef();
-  useEffect(() => {
-    if (anchorRefPromo && anchorRefAller) {
-      anchorRefPromo.current.href = "promozioni";
-      anchorRefAller.current.href = "allergeni";
-    }
-    return
-  }, []);
+function Navbar({ onSearch = () => { }, cartItems = [], increaseQuantity, decreaseQuantity }) {
+  const [showCart, setShowCart] = useState(false);
 
-  const toggleDropdown = () => setIsOpen(prev => !prev);
-
-  const handleSearch = () => {
-    if (onSearch) {
-      onSearch(query); // Passa la query al componente genitore
-    }
-  };
+  const toggleCart = () => setShowCart(prev => !prev);
 
   return (
     <nav className="navbar">
-      {/* Logo */}
       <div className="nav-section logo">
-        <img className="imglogo" src={McImg} alt="logo" />
+        <Link to="/"><img className="imglogo" src={McImg} alt="logo" /></Link>
       </div>
 
-      {/* Home */}
       <div className="nav-section">
-        <Link className="home" to={"/"}>Home</Link>
-
-        {/* Prodotti */}
-        <div className="nav-section prodotti">
-          <button onClick={toggleDropdown} className="dropdown-toggle">Prodotti</button>
-          {isOpen && (
-            <ul className="dropdown-menu">
-              <li><Link to={"prodotti/panini"}>Panini</Link></li>
-              <li><Link to={"prodotti/bevande"}>Bevande</Link></li>
-              <li><Link to={"prodotti/dessert"}>Dessert</Link></li>
-            </ul>
-          )}
-        </div>
-
-        {/* Allergeni */}
-        <Link className="allergeni" to={"allergeni"} ref={anchorRefAller}>Allergeni</Link>
-
-
-        {/* Promozioni */}
-
-        <Link className="promozioni" to={"promozioni"} ref={anchorRefPromo}>Promozioni</Link>
+        <Link className="home" to="/app/home">Home</Link>
+        <Link className="prodotti" to="/app/prodotti">Products</Link>
+        <Link className="allergeni" to="/app/allergeni">Allergens</Link>
+        <Link className="promozioni" to="/app/promozioni">Promotions</Link>
       </div>
 
-      {/* Search */}
-      <div className="nav-section search-area">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Cerca..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className="search-button" type="button" onClick={handleSearch}>
-          Cerca
+      <div className="cart-login">
+        <button className="cart-button" onClick={toggleCart}>
+          <TiShoppingCart className="carrello" />
+          {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
         </button>
+
+        {showCart && (
+          <div className="cart-dropdown">
+            {cartItems.length === 0 ? (
+              <p className="empty-cart">Cart is empty</p>
+            ) : (
+              <ul>
+                {cartItems.map((item, index) => (
+                  <li key={index} className="cart-item">
+                    <span>{item.name}{item.size ? ` - ${item.size}` : ''}</span>
+                    <div className="cart-item-quantity">
+                      <button onClick={() => decreaseQuantity(item)}>-</button>
+                      <span>{item.quantity}</span>
+                      <button onClick={() => increaseQuantity(item)}>+</button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </div>
-    </nav >
+    </nav>
   );
 }
 
