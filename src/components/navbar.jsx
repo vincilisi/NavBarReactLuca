@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import './navbar.css';
 import { Link } from "react-router-dom";
 import McImg from "../assets/media/mc.png";
-import { TiShoppingCart } from "react-icons/ti";
+import CartLogin from "./cart-login";
+import SearchButtonWithInput from "./serch";
 
-function Navbar({ onSearch = () => { }, cartItems = [], increaseQuantity, decreaseQuantity }) {
-  const [showCart, setShowCart] = useState(false);
-
-  const toggleCart = () => setShowCart(prev => !prev);
+function Navbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = (query) => {
+    console.log("Search query:", query);
+  };
 
   return (
     <nav className="navbar">
@@ -22,33 +24,12 @@ function Navbar({ onSearch = () => { }, cartItems = [], increaseQuantity, decrea
         <Link className="promozioni" to="/app/promozioni">Promotions</Link>
       </div>
 
-      <div className="cart-login">
-        <button className="cart-button" onClick={toggleCart}>
-          <TiShoppingCart className="carrello" />
-          {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
-        </button>
-
-        {showCart && (
-          <div className="cart-dropdown">
-            {cartItems.length === 0 ? (
-              <p className="empty-cart">Cart is empty</p>
-            ) : (
-              <ul>
-                {cartItems.map((item, index) => (
-                  <li key={index} className="cart-item">
-                    <span>{item.name}{item.size ? ` - ${item.size}` : ''}</span>
-                    <div className="cart-item-quantity">
-                      <button onClick={() => decreaseQuantity(item)}>-</button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => increaseQuantity(item)}>+</button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-      </div>
+      <CartLogin />
+      <SearchButtonWithInput
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearch={handleSearch}
+      />
     </nav>
   );
 }

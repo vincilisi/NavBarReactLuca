@@ -1,0 +1,21 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1.8rem;
+}
+
+.search-input {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}

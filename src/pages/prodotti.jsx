@@ -1,6 +1,5 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
 import SectionCards from "../components/card";
 import prodotti from '../../mockData/prodotti.json';
 import categorySelection from "../utils/categori-selection";
@@ -26,7 +25,8 @@ const categories = [
 
 const Prodotti = () => {
     const { name } = useParams();
-    const { searchQuery, setSearchQuery, addToCart } = useOutletContext();
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get("query")?.toLowerCase() || "";
 
     const [cards, setCards] = useState([]);
 
@@ -36,11 +36,11 @@ const Prodotti = () => {
         const risultati = prodotti.filter(card =>
             categoria?.includes(card.category) &&
             card.name &&
-            card.name.toLowerCase().includes(searchQuery.toLowerCase())
+            card.name.toLowerCase().includes(query)
         );
 
         setCards(risultati);
-    }, [name, searchQuery]);
+    }, [name, query]);
 
     return (
         <div className="prodotti-layout">
@@ -59,18 +59,7 @@ const Prodotti = () => {
 
             <main className="main-prodotti">
                 <h1>{name ? name.charAt(0).toUpperCase() + name.slice(1) : 'Prodotti'}</h1>
-
-                <div className="search-container">
-                    <input
-                        type="text"
-                        className="search-input"
-                        placeholder="Cerca prodotto..."
-                        value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
-                    />
-                </div>
-
-                <SectionCards cards={cards} addToCart={addToCart} />
+                <SectionCards cards={cards} />
             </main>
         </div>
     );

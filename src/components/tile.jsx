@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TiShoppingCart } from 'react-icons/ti';
 import './card.css';
+import { CartContext } from './layout';
 
-const Tile = ({ id, img, title, price, variant = [], addToCart }) => {
+const Tile = ({ id, img, title, price, variant = [] }) => {
     const [selectedVariant, setSelectedVariant] = useState(variant[0] || null);
+
+    const { addToCart } = useContext(CartContext);
 
     const displayedImage = selectedVariant?.image || img || '';
     const displayedPrice = selectedVariant?.price ?? price ?? 0;
@@ -23,6 +26,7 @@ const Tile = ({ id, img, title, price, variant = [], addToCart }) => {
             size: displayedSize || 'default',
             quantity: 1,
         };
+
         addToCart(item);
     };
 

@@ -1,7 +1,10 @@
-import { useState } from "react";
+// src/components/layout.jsx
+import { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./navbar";
 import Footer from "./Footer";
+
+export const CartContext = createContext();
 
 const Layout = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -38,11 +41,8 @@ const Layout = () => {
 
       if (!existingItem) return prevItems;
 
+      // Se la quantità è 1, lo rimuove (ma la conferma avviene nel componente CartLogin)
       if (existingItem.quantity === 1) {
-        const confirmDelete = window.confirm("Do you want to remove the product from the cart?");
-        if (!confirmDelete) {
-          return prevItems;
-        }
         return prevItems.filter(i => !(i.id === item.id && i.size === item.size));
       } else {
         return prevItems.map(i =>
@@ -54,19 +54,27 @@ const Layout = () => {
     });
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const contextValue = {
+    cartItems,
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+    setSearchQuery,
+  };
+
   return (
-    <>
-      <Navbar
-        onSearch={setSearchQuery}
-        cartItems={cartItems}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
-      />
+    <CartContext.Provider value={contextValue}>
+      <Navbar />
       <main className="full-height">
-        <Outlet context={{ searchQuery, addToCart }} />
+        <Outlet context={{ searchQuery, setSearchQuery, addToCart }} />
       </main>
       <Footer />
-    </>
+    </CartContext.Provider>
   );
 };
 
