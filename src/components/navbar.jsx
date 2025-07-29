@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import McImg from "../assets/media/mc.png";
 import CartLogin from "./cart-login";
 import SearchButtonWithInput from "./serch";
+import Login from "../pages/login";
+import { CiLogin } from "react-icons/ci";
 
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -25,6 +27,7 @@ function Navbar() {
       </div>
 
       <CartLogin />
+      <CiLogin />
       <SearchButtonWithInput
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

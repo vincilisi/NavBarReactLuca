@@ -7,51 +7,45 @@ import Prodotti from "./pages/prodotti.jsx";
 import HomePages from "./pages/homepages.jsx";
 import Promozioni from "./pages/promozioni.jsx";
 import IntroPage from "./pages/IntroPage.jsx";
+import Login from "./pages/login.jsx";
+import PrivateRoute from "./components/privateRoute.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 const routes = createBrowserRouter([
-  {
-    path: "/",
-    element: <IntroPage />, // Homepage iniziale senza layout
-  },
-  {
-    path: "/home",
-    element: <Navigate to="/app/home" replace />, // Redirect da /home a /app/home
-  },
+  { path: "/", element: <IntroPage /> },
+  { path: "/login", element: <Login /> },
+  { path: "/home", element: <Navigate to="/app/home" replace /> },
+
   {
     path: "/app",
-    element: <Layout />, // Layout principale
+    element: <PrivateRoute />, // blocca se non loggato
     children: [
       {
-        path: "home",
-        element: <HomePages />,
-      },
-      {
-        path: "allergeni",
-        element: <Allergeni />,
-      },
-      {
-        path: "prodotti",
+        path: "",
+        element: <Layout />,
         children: [
+          { path: "home", element: <HomePages /> },
+          { path: "allergeni", element: <Allergeni /> },
           {
-            index: true,
-            element: <Navigate to="burgers" replace /> // Redirect automatico a /app/prodotti/burgers
+            path: "prodotti",
+            children: [
+              { index: true, element: <Navigate to="burgers" replace /> },
+              { path: ":name", element: <Prodotti /> },
+            ],
           },
-          {
-            path: ":name",
-            element: <Prodotti />, // Pagina prodotti dinamica (es. burgers, salads, ecc.)
-          }
-        ]
-      },
-      {
-        path: "promozioni",
-        element: <Promozioni />,
+          { path: "promozioni", element: <Promozioni /> },
+        ],
       },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={routes} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={routes} />
+    </AuthProvider>
+  );
 }
 
 export default App;
