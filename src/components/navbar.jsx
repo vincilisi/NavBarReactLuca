@@ -1,16 +1,31 @@
 import React, { useState } from "react";
 import './navbar.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import McImg from "../assets/media/mc.png";
 import CartLogin from "./cart-login";
 import SearchButtonWithInput from "./serch";
-import Login from "../pages/login";
 import { CiLogin } from "react-icons/ci";
+import { useAuth } from "../context/AuthContext";
+import { signOut } from "firebase/auth";
 
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
-  const handleSearch = (query) => {
-    console.log("Search query:", query);
+  const { user, auth } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    // Se vuoi fare redirect alla pagina di login
+    navigate("/login");
+  };
+
+  const handleLogoutClick = async () => {
+    try {
+      await signOut(auth);
+      // opzionale: dopo logout vai alla home o login
+      navigate("/");
+    } catch (error) {
+      console.error("Errore logout:", error);
+    }
   };
 
   return (
@@ -27,12 +42,24 @@ function Navbar() {
       </div>
 
       <CartLogin />
-      <CiLogin />
       <SearchButtonWithInput
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        onSearch={handleSearch}
+        onSearch={(query) => console.log("Search query:", query)}
       />
+
+      {/* Bottone login/logout */}
+      <div className="nav-section login-logout">
+        {user ? (
+          <button onClick={handleLogoutClick}>
+            Logout
+          </button>
+        ) : (
+          <button onClick={handleLoginClick}>
+            <CiLogin /> Login
+          </button>
+        )}
+      </div>
     </nav>
   );
 }
