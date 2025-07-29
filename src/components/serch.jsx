@@ -12,21 +12,7 @@ const SearchButtonWithInput = () => {
 
     const doSearch = () => {
         const trimmed = query.trim().toLowerCase();
-        if (!trimmed) return;
-
-        if (["cola", "coca", "coca-cola", "fanta", "sprite", "pepsi"].some(str => trimmed.includes(str))) {
-            navigate(`/app/prodotti/beverage?query=${encodeURIComponent(trimmed)}`);
-        } else if (["burger", "hamburger", "mc", "big mac", "panino"].some(str => trimmed.includes(str))) {
-            navigate(`/app/prodotti/burgers?query=${encodeURIComponent(trimmed)}`);
-        } else if (["gelato", "dessert", "torta", "dolce", "icecream"].some(str => trimmed.includes(str))) {
-            navigate(`/app/prodotti/dessert?query=${encodeURIComponent(trimmed)}`);
-        } else {
-            navigate(`/app/prodotti?query=${encodeURIComponent(trimmed)}`);
-        }
-
-        // Dopo la ricerca, nascondi il campo e resetta
-        setShowInput(false);
-        setQuery("");
+        navigate("prodotti/" + trimmed)
     };
 
     const handleClick = () => {

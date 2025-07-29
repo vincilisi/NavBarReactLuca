@@ -17,7 +17,7 @@ const Tile = ({ id, img, title, price, variant = [] }) => {
     };
 
     const handleAddToCart = (e) => {
-        e.stopPropagation(); // evita che il click si propaghi
+        e.stopPropagation();
         const item = {
             id,
             name: title,

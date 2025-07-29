@@ -1,0 +1,55 @@
+.card-allergeni {
+    position: relative;
+    margin-top: 2rem;
+    flex: 0 0 200px;
+    width: 15vh;
+    height: 20vh;
+    background-color: #fefefe;
+    border: 2px solid #666;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(106, 97, 97, 0.1);
+}
+
+.card-slid {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px;
+    align-items: center;
+}
+
+.cardall {
+    margin-top: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.titolo-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+.CardPadreAll {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -8,7 +8,10 @@ export const CartContext = createContext();
 
 const Layout = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const items = localStorage.getItem("cartItems");
+    return items ? JSON.parse(items) : [];
+  });
 
   const addToCart = (item) => {
     setCartItems(prevItems => {

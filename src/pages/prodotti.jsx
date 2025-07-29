@@ -32,12 +32,21 @@ const Prodotti = () => {
 
     useEffect(() => {
         const categoria = categorySelection(name);
+        let risultati;
+        console.log('AAA', categoria)
+        if (!categoria) {
+            console.log('BBB', name)
+            console.log(prodotti)
+            risultati = prodotti.filter(card => card.name.toLowerCase().includes(name))
+        } else {
+            risultati = prodotti.filter(card =>
+                categoria?.includes(card.category) &&
+                card.name &&
+                card.name.toLowerCase().includes(query)
+            );
+        }
 
-        const risultati = prodotti.filter(card =>
-            categoria?.includes(card.category) &&
-            card.name &&
-            card.name.toLowerCase().includes(query)
-        );
+
 
         setCards(risultati);
     }, [name, query]);

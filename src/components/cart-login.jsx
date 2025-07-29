@@ -1,5 +1,5 @@
 // src/components/CartLogin.jsx
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
 import { CartContext } from "./layout";
 import Popup from "./Popup";
@@ -9,9 +9,10 @@ const CartLogin = () => {
     const [showCart, setShowCart] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [tempRemovedItem, setTempRemovedItem] = useState(null);
-
     const { cartItems, decreaseQuantity, increaseQuantity } = useContext(CartContext);
-
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
+    }, [cartItems])
     const toggleCart = () => setShowCart(prev => !prev);
 
     const handleDecrease = (item) => {
