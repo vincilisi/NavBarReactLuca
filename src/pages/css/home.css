@@ -155,7 +155,7 @@ h1 {
 }
 
 .freccia {
-  margin-top: 17.5rem;
+  margin-top: 20.8rem;
 }
 
 .sinistra,
@@ -185,4 +185,11 @@ h1 {
 
 .destra {
   right: +25rem;
+}
+
+
+.tecno,
+.para {
+  margin-top: 2rem;
+  text-align: center;
 }

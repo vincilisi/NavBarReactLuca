@@ -1,6 +1,4 @@
 import { FaReact, FaReacteurope } from "react-icons/fa";
-import Footer from "../components/Footer";
-import Navbar from "../components/navbar";
 import "../pages/css/home.css";
 import { useEffect, useState } from "react";
 import FireImg from "../assets/media/firebase.png"
@@ -67,6 +65,7 @@ const HomePages = () => {
           </table>
         </div>
       </div>
+      <h3 className="tecno">Tecnologie usate</h3>
       <div className="carosello-container">
         <button className="freccia sinistra" onClick={handlePrev}>
           <MdArrowBackIos />
@@ -82,6 +81,7 @@ const HomePages = () => {
           <MdArrowForwardIos />
         </button>
       </div>
+      <p className="para">Questo progetto non e' responsive</p>
     </div>
   )
 };

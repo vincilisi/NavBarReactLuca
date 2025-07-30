@@ -41,13 +41,6 @@ function Navbar() {
         <Link className="promozioni" to="/app/promozioni">Promotions</Link>
       </div>
 
-      <CartLogin />
-      <SearchButtonWithInput
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        onSearch={(query) => console.log("Search query:", query)}
-      />
-
       {/* Bottone login/logout */}
       <div className="nav-section login-logout">
         {user ? (
@@ -60,6 +53,13 @@ function Navbar() {
           </button>
         )}
       </div>
+
+      <CartLogin />
+      <SearchButtonWithInput
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearch={(query) => console.log("Search query:", query)}
+      />
     </nav>
   );
 }

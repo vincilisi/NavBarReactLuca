@@ -20,3 +20,17 @@ body,
     flex-direction: column;
     min-height: 100vh;
 }
+
+/* @font-face {
+    font-family: "mcdonalds";
+    src: url(../font/McDonalds_Helvetica.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "mcdonalds", sans-serif;
+} */

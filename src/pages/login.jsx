@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import {
     GoogleAuthProvider,
     signInWithPopup,
-    signInWithEmailAndPassword,
-    signOut
+    signInWithEmailAndPassword
 } from "firebase/auth";
 import { useAuth } from "../context/AuthContext";
 import { Navigate } from "react-router-dom";
+import "../pages/css/login.css"
+import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
     const { user, loading, auth } = useAuth();
@@ -14,6 +15,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+    const [showEmailForm, setShowEmailForm] = useState(false);
 
     const handleLoginGoogle = async () => {
         const provider = new GoogleAuthProvider();
@@ -36,47 +38,69 @@ export default function Login() {
         }
     };
 
-    const handleLogout = async () => {
-        await signOut(auth);
-    };
-
-    if (loading) return <div>Caricamento...</div>;
+    if (loading) return <div className="login-loading">Caricamento...</div>;
 
     if (user) {
         return <Navigate to="/app/home" replace />;
     }
 
     return (
-        <div>
-            <h2>Login</h2>
+        <div className="login-container">
+            <h2 className="login-title">Login</h2>
 
-            {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
+            {errorMsg && <p className="login-error">{errorMsg}</p>}
 
-            <button onClick={handleLoginGoogle}>Accedi con Google</button>
+            <button className="login-button" onClick={handleLoginGoogle}>
+                <FcGoogle />Accedi con Google
+            </button>
 
-            <hr />
+            <hr className="login-divider" />
 
-            <form onSubmit={handleLoginEmail}>
-                <div>
-                    <label>Email:</label><br />
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        required
-                    />
+            {!showEmailForm && (
+                <button
+                    className="login-button"
+                    onClick={() => setShowEmailForm(true)}
+                >
+                    Accedi con Email
+                </button>
+            )}
+
+            {showEmailForm && (
+                <div className="login-email-form">
+                    <form onSubmit={handleLoginEmail}>
+                        <div className="login-field">
+                            <label>Email:</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="login-field">
+                            <label>Password:</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="login-actions">
+                            <button type="submit" className="login-button">
+                                Accedi
+                            </button>
+                            <button
+                                type="button"
+                                className="login-button cancel"
+                                onClick={() => setShowEmailForm(false)}
+                            >
+                                Annulla
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label>Password:</label><br />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Accedi con Email</button>
-            </form>
+            )}
         </div>
     );
 }
