@@ -1,10 +1,10 @@
-import { FaReact, FaReacteurope } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
 import "../pages/css/home.css";
 import { useEffect, useState } from "react";
-import FireImg from "../assets/media/firebase.png"
-import ReactImg from "../assets/media/react.png"
-import HtmlImg from "../assets/media/html.jpg"
-import CssImg from "../assets/media/css.jpg"
+import FireImg from "../assets/media/firebase.png";
+import ReactImg from "../assets/media/react.png";
+import HtmlImg from "../assets/media/html.jpg";
+import CssImg from "../assets/media/css.jpg";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const HomePages = () => {
@@ -13,15 +13,15 @@ const HomePages = () => {
     { img: FireImg },
     { img: ReactImg },
     { img: HtmlImg },
-    { img: CssImg }
+    { img: CssImg },
   ];
+
   useEffect(() => {
     const interval = setInterval(() => {
-      SetSponsor((prevet) => (prevet + 1) % sponsors.length)
-    }, 5000)
-    return () => clearInterval(interval); // Evita duplicazione degli intervalli
-  }, [sponsors.length]
-  );
+      SetSponsor((prev) => (prev + 1) % sponsors.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [sponsors.length]);
 
   const handleNext = () => {
     SetSponsor((prev) => (prev + 1) % sponsors.length);
@@ -30,8 +30,8 @@ const HomePages = () => {
   const handlePrev = () => {
     SetSponsor((prev) => (prev - 1 + sponsors.length) % sponsors.length);
   };
-  return (
 
+  return (
     <div className="homepage">
       <h1>Home Page</h1>
       <h2 className="description">
@@ -65,28 +65,26 @@ const HomePages = () => {
           </table>
         </div>
       </div>
+
       <h3 className="tecno">Tecnologie usate</h3>
-      <div className="carosello-container">
+
+      <div className="carosello">
         <button className="freccia sinistra" onClick={handlePrev}>
           <MdArrowBackIos />
         </button>
 
-        <div className="carosello">
-          <div className="carosello-wrapper">
-            <img src={sponsors[spon].img} alt={`Sponsor ${spon + 1}`} />
-          </div>
+        <div className="carosello-wrapper">
+          <img src={sponsors[spon].img} alt={`Sponsor ${spon + 1}`} />
         </div>
 
         <button className="freccia destra" onClick={handleNext}>
           <MdArrowForwardIos />
         </button>
       </div>
-      <p className="para">Questo progetto non e' responsive</p>
+
+      <p className="para">Questo progetto è ora responsive, realizzato per scopi formativi con React</p>
     </div>
-  )
+  );
 };
+
 export default HomePages;
-
-
-
-

@@ -1,46 +1,37 @@
+/* Generale */
+.homepage {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
 h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4rem;
+  text-align: center;
+  font-size: 3rem;
   color: rgb(255, 204, 0);
   text-shadow: 2px 2px rgb(178, 15, 15);
+  margin: 1rem 0;
 }
-
 
 .description {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
   text-align: center;
+  font-size: 1rem;
+  margin-bottom: 2rem;
   color: #333;
 }
 
-
-.luogo-card {
+.luogo-orari-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 20px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  background-color: #fefefe;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-.luogo-card h2 {
-  width: 100%;
-  margin-bottom: 20px;
-  font-size: 1.5em;
-  color: #333;
-}
-
-.mappa {
-  flex: 1;
-  min-width: 200px;
-  max-width: 300px;
-  padding: 20px;
+.mappa,
+.orari {
+  flex: 1 1 300px;
+  max-width: 400px;
+  padding: 1rem;
   border: 2px solid #ccc;
   border-radius: 10px;
   background-color: #fefefe;
@@ -49,93 +40,33 @@ h1 {
 
 .mappa iframe {
   width: 100%;
-  height: 100%;
-  min-height: 207.6px;
+  height: 200px;
   border: none;
   border-radius: 8px;
 }
 
-.orari {
-  background-color: #fefefe;
-  flex: 1;
-  min-width: 200px;
-  max-width: 300px;
-  padding: 20px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
 .oraritempo td {
   padding: 5px 10px;
-  text-align: left;
 }
 
-
-.luogo-orari-container {
-  text-align: start;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  max-width: 100%;
-  margin: 25px;
-}
-
-.homepage {
-  height: 100vh;
-}
-
-
-
-
-
-
-
-
-.carousel {
-  position: relative;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: opacity 0.5s ease-in-out;
+/* Carosello */
+.tecno {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .carosello {
-  width: 400px;
-  height: 150px;
-  margin-top: 3rem;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
+  width: 90%;
+  max-width: 400px;
+  height: 150px;
+  margin: 2rem auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .carosello-wrapper {
@@ -144,52 +75,78 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
 .carosello-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: opacity 0.5s ease-in-out;
 }
 
+/* Frecce */
 .freccia {
-  margin-top: 20.8rem;
-}
-
-.sinistra,
-.destra {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: transparent;
+  background: transparent;
+  /* niente sfondo */
   border: none;
+  /* niente bordo */
+  box-shadow: none;
+  /* niente ombra */
   font-size: 2rem;
   cursor: pointer;
-  color: #ffcc00;
-  /* Giallo McDonald's, puoi modificarlo */
-  z-index: 10;
-  transition: transform 0.2s ease;
   color: #333;
-}
-
-.sinistra:hover,
-.destra:hover {
-  transform: translateY(-50%) scale(1.2);
+  /* colore icona */
+  padding: 0;
+  /* niente padding */
+  width: auto;
+  /* larghezza automatica */
+  height: auto;
+  /* altezza automatica */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  /* niente outline al focus */
 }
 
 .sinistra {
-  left: +25rem;
+  left: -1.5rem;
+  /* fuori dal carosello */
 }
 
 .destra {
-  right: +25rem;
+  right: -2rem;
+  /* fuori dal carosello */
+}
+
+.freccia:hover {
+  color: #ffcc00;
+  /* colore al passaggio mouse, puoi cambiare */
+  transform: translateY(-50%) scale(1.2);
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 
-.tecno,
 .para {
-  margin-top: 2rem;
   text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .carosello {
+    height: 120px;
+  }
+
+  .freccia {
+    font-size: 1.5rem;
+  }
 }

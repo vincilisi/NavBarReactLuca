@@ -29,15 +29,14 @@ const Prodotti = () => {
     const query = searchParams.get("query")?.toLowerCase() || "";
 
     const [cards, setCards] = useState([]);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
 
     useEffect(() => {
         const categoria = categorySelection(name);
         let risultati;
-        console.log('AAA', categoria)
         if (!categoria) {
-            console.log('BBB', name)
-            console.log(prodotti)
-            risultati = prodotti.filter(card => card.name.toLowerCase().includes(name))
+            risultati = prodotti.filter(card => card.name.toLowerCase().includes(name));
         } else {
             risultati = prodotti.filter(card =>
                 categoria?.includes(card.category) &&
@@ -46,19 +45,22 @@ const Prodotti = () => {
             );
         }
 
-
-
         setCards(risultati);
     }, [name, query]);
 
     return (
         <div className="prodotti-layout">
-            <aside className="sidebar">
+            <button className="hamburger-btn" onClick={toggleSidebar}>
+                ☰
+            </button>
+
+            <aside className={`sidebar-prod ${isSidebarOpen ? "open" : ""}`}>
                 {categories.map(cat => (
                     <Link
                         key={cat.name}
                         to={`/app/prodotti/${cat.name}`}
                         className={`sidebar-item ${name === cat.name ? "active" : ""}`}
+                        onClick={() => setIsSidebarOpen(false)}
                     >
                         <img src={cat.img} alt={cat.label} className="sidebar-img" />
                         <span className="sidebar-label">{cat.label}</span>

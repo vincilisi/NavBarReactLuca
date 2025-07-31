@@ -1,28 +1,34 @@
-import React, { useState } from "react";
-import './navbar.css';
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import McImg from "../assets/media/mc.png";
+import "./navbar.css";
+import SearchButtonWithInput from "./search";
 import CartLogin from "./cart-login";
-import SearchButtonWithInput from "./serch";
-import { CiLogin } from "react-icons/ci";
-import { useAuth } from "../context/AuthContext";
-import { signOut } from "firebase/auth";
+import { useAuth } from "../context/AuthContext";  // Importa il contesto auth
 
-function Navbar() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const { user, auth } = useAuth();
-  const navigate = useNavigate();
+const Navbar = () => {
+  const { user, auth } = useAuth();  // prendi user e auth dal contesto
 
-  const handleLoginClick = () => {
-    // Se vuoi fare redirect alla pagina di login
-    navigate("/login");
-  };
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const handleLogoutClick = async () => {
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setIsSidebarOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
+  const handleLogout = async () => {
     try {
-      await signOut(auth);
-      // opzionale: dopo logout vai alla home o login
-      navigate("/");
+      await auth.signOut();
+      // opzionale: puoi fare redirect o messaggio di logout
     } catch (error) {
       console.error("Errore logout:", error);
     }
@@ -31,37 +37,69 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="nav-section logo">
-        <Link to="/"><img className="imglogo" src={McImg} alt="logo" /></Link>
+        <Link to="/">
+          <img className="imglogo" src={McImg} alt="logo" />
+        </Link>
       </div>
 
-      <div className="nav-section">
-        <Link className="home" to="/app/home">Home</Link>
-        <Link className="prodotti" to="/app/prodotti">Products</Link>
-        <Link className="allergeni" to="/app/allergeni">Allergens</Link>
-        <Link className="promozioni" to="/app/promozioni">Promotions</Link>
-      </div>
+      {!isMobile && (
+        <>
+          <div className="nav-section">
+            <Link to="/app/home" className="home">Home</Link>
+            <Link to="/app/prodotti" className="prodotti">Prodotti</Link>
+            <Link to="/app/allergeni" className="allergeni">Allergeni</Link>
+            <Link to="/app/mappe" className="mappe">Dove siamo nel Mondo</Link>
+          </div>
 
-      {/* Bottone login/logout */}
-      <div className="nav-section login-logout">
-        {user ? (
-          <button onClick={handleLogoutClick}>
-            Logout
+          <SearchButtonWithInput />
+
+          <CartLogin />
+
+          <div className="login-logout">
+            {user ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <button>Login</button>  // qui puoi aprire modal o redirect
+            )}
+          </div>
+        </>
+      )}
+
+      {isMobile && (
+        <>
+          <button
+            className={`hamburger-icon ${isSidebarOpen ? "open" : ""}`}
+            onClick={toggleSidebar}
+            aria-label="Menu"
+            aria-expanded={isSidebarOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
-        ) : (
-          <button onClick={handleLoginClick}>
-            <CiLogin /> Login
-          </button>
-        )}
-      </div>
 
-      <CartLogin />
-      <SearchButtonWithInput
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        onSearch={(query) => console.log("Search query:", query)}
-      />
+          <SearchButtonWithInput />
+
+          <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+            <Link to="/app/home" onClick={() => setIsSidebarOpen(false)} className="home">Home</Link>
+            <Link to="/app/prodotti" onClick={() => setIsSidebarOpen(false)} className="prodotti">Prodotti</Link>
+            <Link to="/app/allergeni" onClick={() => setIsSidebarOpen(false)} className="allergeni">Allergeni</Link>
+            <Link to="/app/mappe" onClick={() => setIsSidebarOpen(false)} className="mappe">Dove siamo nel Mondo</Link>
+
+            <CartLogin />
+
+            <div className="login-logout">
+              {user ? (
+                <button onClick={handleLogout}>Logout</button>
+              ) : (
+                <button>Login</button>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </nav>
   );
-}
+};
 
 export default Navbar;

@@ -5,11 +5,11 @@ import Layout from "./components/layout.jsx";
 import Allergeni from "./pages/allergeni.jsx";
 import Prodotti from "./pages/prodotti.jsx";
 import HomePages from "./pages/homepages.jsx";
-import Promozioni from "./pages/promozioni.jsx";
 import IntroPage from "./pages/IntroPage.jsx";
 import Login from "./pages/login.jsx";
 import PrivateRoute from "./components/privateRoute.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
+import Mappe from "./pages/mappe.jsx";
 
 const routes = createBrowserRouter([
   { path: "/", element: <IntroPage /> },
@@ -33,7 +33,7 @@ const routes = createBrowserRouter([
               { path: ":name", element: <Prodotti /> },
             ],
           },
-          { path: "promozioni", element: <Promozioni /> },
+          { path: "mappe", element: <Mappe /> },
         ],
       },
     ],

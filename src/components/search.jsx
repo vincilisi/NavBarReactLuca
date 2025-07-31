@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import './search.css'
+import './search.css';
 
 const SearchButtonWithInput = () => {
     const [showInput, setShowInput] = useState(false);
@@ -12,7 +12,7 @@ const SearchButtonWithInput = () => {
 
     const doSearch = () => {
         const trimmed = query.trim().toLowerCase();
-        navigate("prodotti/" + trimmed)
+        navigate("prodotti/" + trimmed);
     };
 
     const handleClick = () => {
@@ -72,7 +72,11 @@ const SearchButtonWithInput = () => {
                     onKeyDown={handleKeyDown}
                 />
             )}
-            <button onClick={handleClick} aria-label="Search" className="search-button">
+            <button
+                onClick={handleClick}
+                aria-label="Search"
+                className={`search-button ${showInput ? "open" : ""}`}
+            >
                 <FaSearch />
             </button>
         </div>
